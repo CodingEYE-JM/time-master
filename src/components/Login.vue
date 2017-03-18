@@ -10,7 +10,7 @@
       <input type="password">
     </div>
     <div>
-      <router-link to="/report">
+      <router-link to="/homepage">
         <button>Submit</button>
       </router-link>
     </div>
@@ -28,7 +28,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="stylus" rel="stylesheet/stylus" scoped>
+<style lang="stylus" rel="stylesheet/stylus">
 
 </style>
