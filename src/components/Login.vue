@@ -10,9 +10,7 @@
       <input type="password">
     </div>
     <div>
-      <router-link to="/homepage">
-        <button>Submit</button>
-      </router-link>
+      <router-link to="/homepage" class="submit">Submit</router-link>
     </div>
   </div>
 </template>
@@ -29,5 +27,16 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-
+  div
+    margin-top 10px
+  .submit
+    display block
+    margin 0 auto
+    width 80%
+    border-radius 2px
+    background-color powderblue
+    font-size 12px
+    font-weight bold
+    padding 5px 0
+    color #1E90FF
 </style>

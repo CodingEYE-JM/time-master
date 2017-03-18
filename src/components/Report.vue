@@ -28,7 +28,7 @@
             left: 'center',
             top: 10,
             textStyle: {
-              fontSize: 24,
+              fontSize: 16,
               fontFamily: 'Helvetica',
               fontWeight: 400
             }
@@ -47,14 +47,14 @@
             {
               name: '当月情况',
               type: 'pie',
-              radius: ['50%', '70%'],
+              radius: ['30%', '50%'],
               center: ['50%', '55%'],
               avoidLabelOverlap: false,
               label: {
                 emphasis: {
                   show: true,
                   textStyle: {
-                    fontSize: '24',
+                    fontSize: '16',
                     fontWeight: 'bold'
                   }
                 }
@@ -88,13 +88,18 @@
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
+
   #report
-    position relative
     margin 0 auto
-    min-width 360px
-    min-height 550px
+    min-width 220px
+    min-height 400px
     width 80%
+    max-height 80%
     border solid #D01257 1px
     box-shadow 0 0 8px #FB90B7
     border-radius 10px
+
+  @media screen and (min-width: 960px)
+    #report
+      min-height 550px
 </style>

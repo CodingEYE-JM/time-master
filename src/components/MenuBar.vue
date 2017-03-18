@@ -19,7 +19,8 @@
     bottom 0
     font-size 0
     height 4rem
-    background-color rgba(0, 0, 0, 0.2)
+    border-top 1px solid rgba(0,0,0,0.2)
+    background-color #E5E5E5
     .menu-bar-item
       display inline-block
       width 25%
