@@ -1,10 +1,12 @@
 <template>
   <div class="main_content">
-    <div id="bedroom"></div>
+    <div id="report"></div>
+    <MenuBar></MenuBar>
   </div>
 </template>
 <script>
   import echarts from 'echarts'
+  import MenuBar from './MenuBar.vue'
   export default {
     data() {
       return {
@@ -35,14 +37,6 @@
             trigger: 'item',
             formatte: '{b}: {c} ({d}%)'
           },
-          toolbox: {
-            feature: {
-              saveAsImage: {},
-              dataView: {}
-            },
-            right: 15,
-            top: 10
-          },
           legend: {
             orient: 'vertical',
             left: 5,
@@ -54,7 +48,7 @@
               name: '当月情况',
               type: 'pie',
               radius: ['50%', '70%'],
-              center: ['50%', '50%'],
+              center: ['50%', '55%'],
               avoidLabelOverlap: false,
               label: {
                 emphasis: {
@@ -85,21 +79,22 @@
     },
     mounted() {
       this.$nextTick(function () {
-        this.drawPie('bedroom')
+        this.drawPie('report')
       })
+    },
+    components: {
+      MenuBar
     }
   }
 </script>
-<style scoped>
-  #bedroom {
-    position: relative;
-    margin: 0 auto;
-    min-width: 360px;
-    min-height: 400px;
-    height: 50%;
-    width: 80%;
-    border: solid #D01257 1px;
-    box-shadow: 0 0 8px #FB90B7;
-    border-radius: 10px;
-  }
+<style lang="stylus" rel="stylesheet/stylus">
+  #report
+    position relative
+    margin 0 auto
+    min-width 360px
+    min-height 550px
+    width 80%
+    border solid #D01257 1px
+    box-shadow 0 0 8px #FB90B7
+    border-radius 10px
 </style>
