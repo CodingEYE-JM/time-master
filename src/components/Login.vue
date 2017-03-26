@@ -1,42 +1,157 @@
 <template>
-  <div class="hello">
+  <div class="log-in">
     <h1>{{ msg }}</h1>
-    <div>
-      <label>User Name:</label>
-      <input type="text">
+    <div class="form-container">
+      <input type="text" name="username" class="username" placeholder="Username" @keydown="resetError">
+      <input type="password" name="password" class="password" placeholder="Password" @keydown="resetError">
+      <button class="sign-in" @click="validateSubmit">Sign In</button>
+      <div class="error"><span>+</span></div>
+    </div>
+    <div class="connect">
+      <p>Or connect with:</p>
+      <p>
+        <a class="we-chat" href="#"></a>
+        <a class="qq" href="#"></a>
+      </p>
     </div>
     <div>
-      <label>Password:</label>
-      <input type="password">
-    </div>
-    <div>
-      <router-link to="/homepage" class="submit">Submit</router-link>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'hello',
-  data () {
-    return {
-      msg: 'Welcome to Time-Master'
+  import 'common/js/jquery-1.11.3.min.js'
+  import router from '../router'
+
+  export default {
+    name: 'log-in',
+    data () {
+      return {
+        msg: 'Welcome to Time-Master',
+        m_username: 'admin',
+        m_password: 'admin'
+      }
+    },
+    methods: {
+      validateSubmit(){
+        let username = $('.form-container .username').val();
+        let password = $('.form-container .password').val();
+        if (username === '') {
+          $('.form-container .error').fadeOut('fast', function () {
+            $(this).css('top', '27px');
+          });
+          $('.form-container .error').fadeIn('fast', function () {
+            $(this).parent().find('.username').focus();
+          });
+          return;
+        }
+        if (password === '') {
+          $('.form-container .error').fadeOut('fast', function () {
+            $(this).css('top', '96px');
+          });
+          $('.form-container .error').fadeIn('fast', function () {
+            $(this).parent().find('.password').focus();
+          });
+          return;
+        }
+        if (username === this.m_username && password === this.m_password) {
+          router.push('/homepage')
+        }
+      },
+
+      resetError(){
+        $('.form-container .error').fadeOut('fast');
+      }
     }
   }
-}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  div
-    margin-top 10px
-  .submit
-    display block
-    margin 0 auto
-    width 80%
-    border-radius 2px
-    background-color powderblue
-    font-size 12px
-    font-weight bold
-    padding 5px 0
-    color #1E90FF
+  h1
+    font-size 30px
+    font-weight 700
+    text-shadow 0 1px 4px rgba(0, 0, 0, .2)
+
+  .form-container
+    position relative
+    width 70%
+    max-width 300px
+    margin 15px auto 0 auto
+    text-align center
+    input
+      width 80%
+      height 42px
+      margin-top 25px
+      padding 0 9.5%
+      background rgba(45, 100, 200, .1)
+      border-radius 6px
+      border 1px solid rgba(0, 0, 0, .15)
+      box-shadow 0 2px 3px 0 rgba(0, 0, 0, .1) inset
+      font-size 14px
+      color rgb(80, 80, 100)
+      text-shadow 0 1px 2px rgba(0, 0, 0, .1)
+      transition all .2s
+      &::placeholder
+        color rgba(80, 80, 100, .35)
+      &:focus
+        box-shadow 0 2px 3px 0 rgba(0, 0, 0, .1) inset, 0 2px 7px 0 rgba(0, 0, 0, .2)
+
+    button
+      cursor pointer
+      width 100%
+      height 44px
+      margin-top 25px
+      padding 0
+      background #436EEE
+      border-radius 6px
+      border 1px solid #436EEE
+      box-shadow 0 15px 30px 0 rgba(255, 255, 255, .25) inset, 0 2px 7px 0 rgba(0, 0, 0, .2)
+      font-size 14px
+      font-weight 700
+      color #fff
+      text-shadow 0 1px 2px rgba(0, 0, 0, .1)
+      transition all .2s
+      &:hover
+        box-shadow 0 15px 30px 0 rgba(255, 255, 255, .15) inset, 0 2px 7px 0 rgba(0, 0, 0, .2)
+      &:active
+        box-shadow 0 5px 8px 0 rgba(0, 0, 0, .1) inset, 0 1px 4px 0 rgba(0, 0, 0, .1)
+        border 0
+
+    .error
+      display none
+      position absolute
+      right -18%
+      width 40px
+      height 40px
+      background rgba(45, 45, 45, .25)
+      border-radius 8px
+      & span
+        display inline-block
+        margin-left 2px
+        font-size 40px
+        font-weight 700
+        line-height 40px
+        text-shadow 0 1px 2px rgba(0, 0, 0, .1)
+        transform rotate(45deg)
+
+  .connect
+    width 305px
+    margin 35px auto 0 auto
+    font-size 18px
+    font-weight 700
+    text-shadow 0 1px 3px rgba(0, 0, 0, .2)
+    & a
+      display inline-block
+      width 32px
+      height 35px
+      margin-top 15px
+      transition all .2s
+      &.we-chat
+        background url(../common/img/wechat.svg) center center no-repeat
+        background-size 32px 35px
+      &.qq
+        background url(../common/img/qq.svg) center center no-repeat
+        background-size 32px 35px
+      &:hover
+        opacity .7
 </style>
