@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import 'common/js/jquery-1.11.3.min.js'
+  import 'jquery'
   import router from '../router'
 
   export default {
