@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import 'jquery'
+  import jquery from 'jquery'
   import router from '../router'
 
   export default {
@@ -34,23 +34,23 @@
     },
     methods: {
       validateSubmit(){
-        let username = $('.form-container .username').val();
-        let password = $('.form-container .password').val();
+        let username = jquery('.form-container .username').val();
+        let password = jquery('.form-container .password').val();
         if (username === '') {
-          $('.form-container .error').fadeOut('fast', function () {
-            $(this).css('top', '27px');
+          jquery('.form-container .error').fadeOut('fast', function () {
+            jquery(this).css('top', '27px');
           });
-          $('.form-container .error').fadeIn('fast', function () {
-            $(this).parent().find('.username').focus();
+          jquery('.form-container .error').fadeIn('fast', function () {
+            jquery(this).parent().find('.username').focus();
           });
           return;
         }
         if (password === '') {
-          $('.form-container .error').fadeOut('fast', function () {
-            $(this).css('top', '96px');
+          jquery('.form-container .error').fadeOut('fast', function () {
+            jquery(this).css('top', '96px');
           });
-          $('.form-container .error').fadeIn('fast', function () {
-            $(this).parent().find('.password').focus();
+          jquery('.form-container .error').fadeIn('fast', function () {
+            jquery(this).parent().find('.password').focus();
           });
           return;
         }
@@ -60,7 +60,7 @@
       },
 
       resetError(){
-        $('.form-container .error').fadeOut('fast');
+        jquery('.form-container .error').fadeOut('fast');
       }
     }
   }
