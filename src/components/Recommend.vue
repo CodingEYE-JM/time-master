@@ -1,6 +1,6 @@
 <template>
-  <div>
-    This is Recommend
+  <div class="recommend-wrapper">
+    <div class="text">推荐模块正在施工中...</div>
     <MenuBar></MenuBar>
   </div>
 </template>

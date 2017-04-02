@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import jquery from 'jquery'
+  import $ from '../../static/js/jquery-vendor.js'
   import router from '../router'
 
   export default {
@@ -36,23 +36,23 @@
     },
     methods: {
       validateSubmit(){
-        let username = jquery('.form-container .username').val();
-        let password = jquery('.form-container .password').val();
+        let username = $('.form-container .username').val();
+        let password = $('.form-container .password').val();
         if (username === '') {
-          jquery('.form-container .error').fadeOut('fast', function () {
-            jquery(this).css('top', '27px');
+          $('.form-container .error').fadeOut('fast', function () {
+            $(this).css('top', '27px');
           });
-          jquery('.form-container .error').fadeIn('fast', function () {
-            jquery(this).parent().find('.username').focus();
+          $('.form-container .error').fadeIn('fast', function () {
+            $(this).parent().find('.username').focus();
           });
           return;
         }
         if (password === '') {
-          jquery('.form-container .error').fadeOut('fast', function () {
-            jquery(this).css('top', '96px');
+          $('.form-container .error').fadeOut('fast', function () {
+            $(this).css('top', '96px');
           });
-          jquery('.form-container .error').fadeIn('fast', function () {
-            jquery(this).parent().find('.password').focus();
+          $('.form-container .error').fadeIn('fast', function () {
+            $(this).parent().find('.password').focus();
           });
           return;
         }
@@ -62,7 +62,7 @@
       },
 
       resetError(){
-        jquery('.form-container .error').fadeOut('fast');
+        $('.form-container .error').fadeOut('fast');
       }
     }
   }
@@ -131,6 +131,7 @@
       background rgba(45, 45, 45, .25)
       border-radius 8px
       & span
+        font-family 'Avenir', Arial
         display inline-block
         margin-left 2px
         font-size 40px
@@ -152,10 +153,10 @@
       margin-top 15px
       transition all .2s
       &.we-chat
-        background url(../common/img/wechat.svg) center center no-repeat
+        background url(../../static/img/wechat.svg) center center no-repeat
         background-size 32px 35px
       &.qq
-        background url(../common/img/qq.svg) center center no-repeat
+        background url(../../static/img/qq.svg) center center no-repeat
         background-size 32px 35px
       &:hover
         opacity .7
@@ -174,13 +175,14 @@
   .bg-image
     filter blur(10px)
     z-index -2
-    background url(../common/img/bg-image.jpg) no-repeat
+    background url(../../static/img/bg-image.jpg) no-repeat
     background-size cover
 
   @media screen and (max-width: 768px)
     .log-in
       margin-top 50px
+
     .bg-image
-      background url(../common/img/bg-image-mobile.jpg) no-repeat
+      background url(../../static/img/bg-image-mobile.jpg) no-repeat
       background-size cover
 </style>

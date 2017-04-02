@@ -1,6 +1,6 @@
 <template>
-  <div>
-    This is About
+  <div class="about-wrapper">
+    <div class="text">关于模块正在施工中...</div>
     <MenuBar></MenuBar>
   </div>
 </template>

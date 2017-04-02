@@ -1,5 +1,5 @@
 <template>
-  <div class="main_content">
+  <div class="report-wrapper">
     <div id="report"></div>
     <MenuBar></MenuBar>
   </div>
@@ -95,8 +95,8 @@
     min-height 400px
     width 80%
     max-height 80%
-    border solid #D01257 1px
-    box-shadow 0 0 8px #FB90B7
+    border 1px solid rgba(82, 136, 112, .5)
+    box-shadow 0 0 8px rgb(188, 208, 197)
     border-radius 10px
 
   @media screen and (min-width: 960px)

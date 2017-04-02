@@ -14,16 +14,19 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .menu-bar
     position fixed
+    display flex
     left 0
     right 0
     bottom 0
     font-size 0
-    height 4rem
-    border-top 1px solid rgba(0,0,0,0.2)
-    background-color #E5E5E5
+    height 3rem
+    border-top 1px solid rgba(82, 136, 112, .5)
+    background-color rgba(188, 208, 197, .3)
     .menu-bar-item
-      display inline-block
-      width 25%
-      margin-top 15px
-      font-size 24px
+      flex 1
+      margin 12px 0
+      font-size 20px
+      border-right 1px solid rgba(82, 136, 112, .5)
+      &:last-child
+        border-right 0
 </style>
