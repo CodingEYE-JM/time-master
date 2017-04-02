@@ -12,10 +12,9 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   #app
-    font-family 'Avenir', Helvetica, Arial, sans-serif
     -webkit-font-smoothing antialiased
     -moz-osx-font-smoothing grayscale
     text-align center
-    color #2c3e50
+    color #1D2F3B
     margin-top 30px
 </style>

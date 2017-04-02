@@ -14,6 +14,8 @@
         <a class="qq" href="#"></a>
       </p>
     </div>
+    <div class="bg"></div>
+    <div class="bg-image"></div>
     <div>
     </div>
   </div>
@@ -72,39 +74,42 @@
     font-weight 700
     text-shadow 0 1px 4px rgba(0, 0, 0, .2)
 
+  .log-in
+    margin-top 100px
+
   .form-container
     position relative
     width 70%
     max-width 300px
     margin 15px auto 0 auto
     text-align center
-    input
+    .username, .password
       width 80%
       height 42px
       margin-top 25px
       padding 0 9.5%
-      background rgba(45, 100, 200, .1)
+      background rgba(188, 208, 197, .3)
       border-radius 6px
-      border 1px solid rgba(0, 0, 0, .15)
+      border 1px solid rgba(82, 136, 112, .15)
       box-shadow 0 2px 3px 0 rgba(0, 0, 0, .1) inset
       font-size 14px
-      color rgb(80, 80, 100)
+      color 000
       text-shadow 0 1px 2px rgba(0, 0, 0, .1)
       transition all .2s
       &::placeholder
-        color rgba(80, 80, 100, .35)
+        color rgb(82, 136, 112)
       &:focus
         box-shadow 0 2px 3px 0 rgba(0, 0, 0, .1) inset, 0 2px 7px 0 rgba(0, 0, 0, .2)
 
-    button
+    .sign-in
       cursor pointer
       width 100%
       height 44px
       margin-top 25px
       padding 0
-      background #436EEE
+      background #528870
       border-radius 6px
-      border 1px solid #436EEE
+      border 1px solid #528870
       box-shadow 0 15px 30px 0 rgba(255, 255, 255, .25) inset, 0 2px 7px 0 rgba(0, 0, 0, .2)
       font-size 14px
       font-weight 700
@@ -154,4 +159,28 @@
         background-size 32px 35px
       &:hover
         opacity .7
+
+  .bg, .bg-image
+    position absolute
+    left 0
+    top 0
+    width 100%
+    height 100%
+
+  .bg
+    z-index -1
+    background rgba(242, 242, 242, .5)
+
+  .bg-image
+    filter blur(10px)
+    z-index -2
+    background url(../common/img/bg-image.jpg) no-repeat
+    background-size cover
+
+  @media screen and (max-width: 768px)
+    .log-in
+      margin-top 50px
+    .bg-image
+      background url(../common/img/bg-image-mobile.jpg) no-repeat
+      background-size cover
 </style>
