@@ -1,5 +1,5 @@
 <template>
-  <div class="log-in">
+  <div class="log-in" @keydown="signIn(event)">
     <h1>{{ msg }}</h1>
     <div class="form-container">
       <input type="text" name="username" class="username" placeholder="Username" @keydown="resetError">
@@ -63,7 +63,14 @@
 
       resetError(){
         $('.form-container .error').fadeOut('fast');
+      },
+
+      signIn(event) {
+        if (event.keyCode == 13) {
+          $('.sign-in').click();
+        }
       }
+
     }
   }
 </script>
