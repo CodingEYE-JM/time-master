@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/Login'
 import HomePage from '@/components/HomePage'
+import Activity from '@/components/Activity'
 import Report from '@/components/Report'
 import Recommend from '@/components/Recommend'
 import About from '@/components/About'
@@ -19,6 +20,11 @@ export default new Router({
       path: '/homepage',
       name: 'HomePage',
       component: HomePage
+    },
+    {
+      path: '/activity',
+      name: 'Activity',
+      component: Activity
     },
     {
       path: '/report',

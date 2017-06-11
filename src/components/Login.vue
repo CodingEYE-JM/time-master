@@ -91,10 +91,10 @@
     margin 15px auto 0 auto
     text-align center
     .username, .password
-      width 80%
       height 42px
+      width 100%
       margin-top 25px
-      padding 0 9.5%
+      padding 0 7%
       background rgba(188, 208, 197, .3)
       border-radius 6px
       border 1px solid rgba(82, 136, 112, .15)
@@ -110,8 +110,8 @@
 
     .sign-in
       cursor pointer
-      width 100%
       height 44px
+      width 100%
       margin-top 25px
       padding 0
       background #528870

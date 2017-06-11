@@ -19,7 +19,7 @@
     right 0
     bottom 0
     font-size 0
-    height 3rem
+    height 4.5rem
     border-top 1px solid rgba(82, 136, 112, .5)
     background-color rgba(188, 208, 197, .3)
     .menu-bar-item
