@@ -1,14 +1,13 @@
 <template>
   <div class="actitity-wrapper">
     {{calActivities}}
-    <div class="activity-header">
-      <button class="confirm">Confirm</button>
+    <mu-raised-button label="确认" primary/>
+    <div class="activity-content">
+      <mu-list-item v-for="(activity, index) in activities" class="activity" :key="index" :rows="1" :cols="1">
+        <span class="text">{{activity.name}}</span>
+        <mu-switch class="state" v-model="activity.active"/>
+      </mu-list-item>
     </div>
-    <li v-for="(activity, index) in activities" class="activity">
-      <span class="text">{{activity.name}}</span>
-      <mu-switch class="state" v-model="activity.active"/>
-      <br/>
-    </li>
   </div>
 </template>
 
@@ -40,15 +39,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .actitity-wrapper
-    .activity-header
-      display inline-block
-      .confirm
-        text-align right
-    .activity
-      .text
-        text-align left
-        font-size 20px
-      .state
-        text-align right
+  .activity-content
+    margin-top 20px
+    font-size 20px
 </style>

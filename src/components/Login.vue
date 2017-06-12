@@ -2,13 +2,13 @@
   <div class="log-in" @keydown="signIn()">
     <h1>{{ msg }}</h1>
     <div class="form-container">
-      <input type="text" name="username" class="username" placeholder="Username" @keydown="resetError">
-      <input type="password" name="password" class="password" placeholder="Password" @keydown="resetError">
-      <button class="sign-in" @click="validateSubmit">Sign In</button>
+      <input type="text" name="username" class="username" placeholder="用户名" @keydown="resetError">
+      <input type="password" name="password" class="password" placeholder="密码" @keydown="resetError">
+      <button class="sign-in" @click="validateSubmit">登录</button>
       <div class="error"><span>+</span></div>
     </div>
     <div class="connect">
-      <p>Or connect with:</p>
+      <p>快速登录:</p>
       <p>
         <a class="we-chat" href="#"></a>
         <a class="qq" href="#"></a>
@@ -29,7 +29,7 @@
     name: 'log-in',
     data () {
       return {
-        msg: 'Welcome to Time-Master',
+        msg: '欢迎来到【时趣】',
         m_username: 'admin',
         m_password: 'admin'
       }

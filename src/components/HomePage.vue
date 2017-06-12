@@ -1,7 +1,9 @@
 <template>
   <div class="homepage-wrapper">
-    <mu-date-picker hintText="Select Date" v-model="selectedDate" format="YYYY/MM/DD"/><br/>
-    <Activity :selected-date="selectedDate"></Activity>
+    <div class="homepage-content">
+      <mu-date-picker hintText="请选择日期" v-model="selectedDate" format="YYYY/MM/DD"/><br/>
+      <Activity :selected-date="selectedDate"></Activity>
+    </div>
     <MenuBar></MenuBar>
   </div>
 </template>
