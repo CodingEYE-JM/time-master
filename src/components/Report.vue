@@ -10,19 +10,18 @@
   export default {
     data() {
       return {
-        activityCounts: {},
+        activityCounts: {
+          eatingCount: 0,
+          learningCount: 0,
+          sportsCount: 0,
+          workingCount: 0,
+          sleepingCount: 0,
+          readingCount: 0,
+          playingCount: 0,
+          shoppingCount: 0
+        },
         chart: null,
         opinion: ['吃饭', '学习', '运动', '工作', '睡觉', '阅读', '游戏', '购物'],
-        opinionData: [
-          {value: this.activityCounts.eatingCount, name: '吃饭'},
-          {value: this.activityCounts.learningCount, name: '学习'},
-          {value: this.activityCounts.sportsCount, name: '运动'},
-          {value: this.activityCounts.workingCount, name: '工作'},
-          {value: this.activityCounts.sleepingCount, name: '睡觉'},
-          {value: this.activityCounts.readingCount, name: '阅读'},
-          {value: this.activityCounts.playingCount, name: '游戏'},
-          {value: this.activityCounts.shoppingCount, name: '购物'},
-        ],
         tabStates: {
           setting: "",
           report: "selected",
@@ -52,7 +51,7 @@
           legend: {
             orient: 'horizontal',
             top: 40,
-            data: this.opinion,
+            data: this.opinion
           },
           series: [
             {
@@ -79,7 +78,16 @@
                   show: false
                 }
               },
-              data: this.opinionData,
+              data: [
+                {value: this.activityCounts.eatingCount, name: '吃饭'},
+                {value: this.activityCounts.learningCount, name: '学习'},
+                {value: this.activityCounts.sportsCount, name: '运动'},
+                {value: this.activityCounts.workingCount, name: '工作'},
+                {value: this.activityCounts.sleepingCount, name: '睡觉'},
+                {value: this.activityCounts.readingCount, name: '阅读'},
+                {value: this.activityCounts.playingCount, name: '游戏'},
+                {value: this.activityCounts.shoppingCount, name: '购物'}
+              ],
               itemStyle: {
                 emphasis: {
                   shadowBlur: 10,
@@ -93,12 +101,13 @@
       }
     },
     mounted() {
-      this.$http.get('http://192.168.1.109:8088/api/activity/2017/06').then((response) => {
-        response = response.body;
-        this.activityCounts = response;
-        this.drawPie('report');
-      });
-      alert(this.activityCounts.eatingCount);
+      this.$nextTick(function () {
+        this.$http.get('http://192.168.1.109:8088/api/activity/2017/06').then((response) => {
+          response = response.body;
+          this.activityCounts = response;
+          this.drawPie('report')
+        });
+      })
     },
     components: {
       MenuBar
