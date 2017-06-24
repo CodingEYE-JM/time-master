@@ -82,7 +82,7 @@
     text-shadow 0 1px 4px rgba(0, 0, 0, .2)
 
   .log-in
-    margin-top 100px
+    margin-top 10%
 
   .form-container
     position relative
@@ -92,6 +92,7 @@
     text-align center
     .username, .password
       height 42px
+      line-height 21px
       width 100%
       margin-top 25px
       padding 0 7%
@@ -103,8 +104,9 @@
       color 000
       text-shadow 0 1px 2px rgba(0, 0, 0, .1)
       transition all .2s
-      &::placeholder
-        color rgb(82, 136, 112)
+      &::placeholder,&::-webkit-input-placeholder
+        color #528870
+        opacity 1
       &:focus
         box-shadow 0 2px 3px 0 rgba(0, 0, 0, .1) inset, 0 2px 7px 0 rgba(0, 0, 0, .2)
 
@@ -187,7 +189,7 @@
 
   @media screen and (max-width: 768px)
     .log-in
-      margin-top 50px
+      margin-top 20%
 
     .bg-image
       background url(../../static/img/bg-image-mobile.jpg) no-repeat

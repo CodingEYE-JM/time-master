@@ -19,14 +19,15 @@
     right 0
     bottom 0
     font-size 0
-    height 4.5rem
+    height 50px
     border-top 1px solid rgba(82, 136, 112, .5)
-    background-color rgba(188, 208, 197, .3)
+    background-color #F5FAFA
     .menu-bar-item
       flex 1
       margin 12px 0
       font-size 20px
       border-right 1px solid rgba(82, 136, 112, .5)
+      color #1d2f3b
       &:last-child
         border-right 0
 </style>

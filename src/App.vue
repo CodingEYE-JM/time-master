@@ -17,4 +17,5 @@
     text-align center
     color #1D2F3B
     margin-top 30px
+    margin-bottom 50px
 </style>

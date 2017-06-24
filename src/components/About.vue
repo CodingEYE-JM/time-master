@@ -46,7 +46,7 @@
     .log-off
       position absolute
       left 50%
-      bottom 5rem
+      bottom 70px
       cursor pointer
       max-width 300px
       width 70%
