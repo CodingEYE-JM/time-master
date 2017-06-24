@@ -20,7 +20,7 @@
     <router-link to="/">
       <button class="log-off">退出</button>
     </router-link>
-    <MenuBar></MenuBar>
+    <MenuBar :tabStates="tabStates"></MenuBar>
   </div>
 </template>
 
@@ -28,6 +28,16 @@
   import MenuBar from './MenuBar.vue'
 
   export default{
+    data() {
+      return {
+        tabStates: {
+          setting: "",
+          report: "",
+          recommend: "",
+          about: "selected"
+        }
+      }
+    },
     components: {
       MenuBar
     }

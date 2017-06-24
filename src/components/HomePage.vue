@@ -2,10 +2,11 @@
   <div class="homepage-wrapper">
     <div class="homepage-content">
       <mu-date-picker hintText="请选择日期" hintTextClass="date-picker-hintText" v-model="selectedDate"
-                      format="YYYY/MM/DD" inputClass="date-picker-input" :underlineShow="false" /><br/>
-      <Activity :selected-date="selectedDate"></Activity>
+                      format="YYYY/MM/DD" inputClass="date-picker-input" :underlineShow="false"/>
+      <br/>
+      <Activity :selected-date="selectedDate" v-on:modifyActivity="refreshDate"></Activity>
     </div>
-    <MenuBar></MenuBar>
+    <MenuBar :tabStates="tabStates"></MenuBar>
   </div>
 </template>
 
@@ -16,12 +17,23 @@
   export default{
     data() {
       return {
-        selectedDate: ''
+        selectedDate: '',
+        tabStates: {
+          setting: "selected",
+          report: "",
+          recommend: "",
+          about: ""
+        }
       }
     },
     components: {
       MenuBar,
       Activity
+    },
+    methods: {
+      refreshDate(){
+        this.selectedDate = '';
+      }
     }
   }
 </script>

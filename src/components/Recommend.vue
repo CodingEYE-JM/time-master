@@ -1,7 +1,7 @@
 <template>
   <div class="recommend-wrapper">
     <div class="text">推荐模块正在施工中...</div>
-    <MenuBar></MenuBar>
+    <MenuBar :tabStates="tabStates"></MenuBar>
   </div>
 </template>
 
@@ -9,6 +9,16 @@
   import MenuBar from './MenuBar.vue'
 
   export default{
+    data() {
+      return {
+        tabStates: {
+          setting: "",
+          report: "",
+          recommend: "selected",
+          about: ""
+        }
+      }
+    },
     components: {
       MenuBar
     }

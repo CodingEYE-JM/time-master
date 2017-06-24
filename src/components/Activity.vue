@@ -1,11 +1,11 @@
 <template>
-  <div class="activity-wrapper">
+  <div class="activity-wrapper" v-show="activities.length>0">
     {{calActivities}}
-    <mu-raised-button label="确认" primary/>
-    <div class="activity-content" v-show="activities.length>0">
+    <mu-raised-button label="确认" primary @click="modifyActivity"/>
+    <div class="activity-content">
       <ul class="activity-list">
         <li v-for="(activity, index) in activities" class="activity"
-                      :key="index">
+            :key="index">
           <span class="text">{{activity.name}}</span>
           <mu-switch class="state" v-model="activity.active"/>
         </li>
@@ -23,7 +23,10 @@
     },
     data() {
       return {
-        activities: []
+        activities: [],
+        activityData: {
+          type: Object
+        }
       }
     },
     computed: {
@@ -33,8 +36,16 @@
         }
         this.$http.get('http://192.168.1.109:8088/api/activity/' + this.selectedDate).then((response) => {
           response = response.body;
+          this.activityData = response;
           this.activities = response.activities;
         });
+      }
+    },
+    methods: {
+      modifyActivity(){
+        this.activityData.activities = this.activities;
+        this.activities = [];
+        this.$emit('modifyActivity');
       }
     }
   }

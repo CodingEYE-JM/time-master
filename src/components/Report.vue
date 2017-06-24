@@ -1,7 +1,7 @@
 <template>
   <div class="report-wrapper">
     <div id="report"></div>
-    <MenuBar></MenuBar>
+    <MenuBar :tabStates="tabStates"></MenuBar>
   </div>
 </template>
 <script>
@@ -10,13 +10,25 @@
   export default {
     data() {
       return {
+        activityCounts: {},
         chart: null,
-        opinion: ['吃饭', '学习', '运动'],
+        opinion: ['吃饭', '学习', '运动', '工作', '睡觉', '阅读', '游戏', '购物'],
         opinionData: [
-          {value: 26, name: '吃饭'},
-          {value: 31, name: '学习'},
-          {value: 8, name: '运动'}
-        ]
+          {value: this.activityCounts.eatingCount, name: '吃饭'},
+          {value: this.activityCounts.learningCount, name: '学习'},
+          {value: this.activityCounts.sportsCount, name: '运动'},
+          {value: this.activityCounts.workingCount, name: '工作'},
+          {value: this.activityCounts.sleepingCount, name: '睡觉'},
+          {value: this.activityCounts.readingCount, name: '阅读'},
+          {value: this.activityCounts.playingCount, name: '游戏'},
+          {value: this.activityCounts.shoppingCount, name: '购物'},
+        ],
+        tabStates: {
+          setting: "",
+          report: "selected",
+          recommend: "",
+          about: ""
+        }
       }
     },
     methods: {
@@ -35,26 +47,29 @@
           },
           tooltip: {
             trigger: 'item',
-            formatte: '{b}: {c} ({d}%)'
+            formatter: '{b}: {c} ({d}%)'
           },
           legend: {
-            orient: 'vertical',
-            left: 5,
-            top: 10,
+            orient: 'horizontal',
+            top: 40,
             data: this.opinion,
           },
           series: [
             {
               name: '当月情况',
               type: 'pie',
-              radius: ['30%', '50%'],
+              radius: ['50%', '70%'],
               center: ['50%', '55%'],
               avoidLabelOverlap: false,
               label: {
+                normal: {
+                  show: false,
+                  position: 'center'
+                },
                 emphasis: {
                   show: true,
                   textStyle: {
-                    fontSize: '16',
+                    fontSize: '24',
                     fontWeight: 'bold'
                   }
                 }
@@ -78,9 +93,12 @@
       }
     },
     mounted() {
-      this.$nextTick(function () {
-        this.drawPie('report')
-      })
+      this.$http.get('http://192.168.1.109:8088/api/activity/2017/06').then((response) => {
+        response = response.body;
+        this.activityCounts = response;
+        this.drawPie('report');
+      });
+      alert(this.activityCounts.eatingCount);
     },
     components: {
       MenuBar
@@ -93,8 +111,7 @@
     margin 0 auto
     min-width 220px
     min-height 400px
-    width 80%
-    max-height 80%
+    width 90%
     border 1px solid rgba(82, 136, 112, .5)
     box-shadow 0 0 8px rgb(188, 208, 197)
     border-radius 10px
