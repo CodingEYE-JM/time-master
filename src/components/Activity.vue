@@ -26,6 +26,9 @@
         activities: [],
         activityData: {
           type: Object
+        },
+        params: {
+          type: String
         }
       }
     },
@@ -45,6 +48,19 @@
       modifyActivity(){
         this.activityData.activities = this.activities;
         this.activities = [];
+        this.params = "?id=" + this.activityData.id
+          + "&eating=" +this.activityData.activities[0].active
+          + "&learning=" +this.activityData.activities[1].active
+          + "&sports=" +this.activityData.activities[2].active
+          + "&working=" +this.activityData.activities[3].active
+          + "&sleeping=" +this.activityData.activities[4].active
+          + "&reading=" +this.activityData.activities[5].active
+          + "&playing=" +this.activityData.activities[6].active
+          + "&shopping=" +this.activityData.activities[7].active;
+
+        this.$http.post('http://192.168.1.109:8088/api/activity/' + this.selectedDate + this.params).then((response) => {
+        });
+
         this.$emit('modifyActivity');
       }
     }

@@ -31,6 +31,13 @@
       }
     },
     methods: {
+      getYearMonth() {
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        month = month < 10 ? "0" + month : month;
+        return year + "/" + month;
+      },
       drawPie(id) {
         this.chart = echarts.init(document.getElementById(id))
         this.chart.setOption({
@@ -102,10 +109,10 @@
     },
     mounted() {
       this.$nextTick(function () {
-        this.$http.get('http://192.168.1.109:8088/api/activity/2017/06').then((response) => {
+        this.$http.get('http://192.168.1.109:8088/api/activity/' + this.getYearMonth()).then((response) => {
           response = response.body;
           this.activityCounts = response;
-          this.drawPie('report')
+          this.drawPie('report');
         });
       })
     },

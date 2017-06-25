@@ -24,14 +24,74 @@
           recommend: "selected",
           about: ""
         },
-        sameTypeUsers: []
+        sameTypeUsers: [],
+        activityCounts: {
+          eatingCount: 0,
+          learningCount: 0,
+          sportsCount: 0,
+          workingCount: 0,
+          sleepingCount: 0,
+          readingCount: 0,
+          playingCount: 0,
+          shoppingCount: 0
+        },
+        userType: '',
       }
     },
     created() {
-      this.$http.get('http://192.168.1.109:8088/api/recommend/EATER').then((response) => {
+      this.$http.get('http://192.168.1.109:8088/api/activity/' + this.getYearMonth()).then((response) => {
         response = response.body;
-        this.sameTypeUsers = response;
-      });
+        this.activityCounts = response;
+        this.getUserType();
+        this.$http.get('http://192.168.1.109:8088/api/recommend/' + this.userType).then((response) => {
+          response = response.body;
+          this.sameTypeUsers = response;
+        });
+      })
+    },
+    methods: {
+      getYearMonth() {
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        month = month < 10 ? "0" + month : month;
+        return year + "/" + month;
+      },
+      getUserType() {
+        let maxCount = 0;
+        if (this.activityCounts.eatingCount > maxCount) {
+          maxCount = this.activityCounts.eatingCount;
+          this.userType = 'EATER';
+        }
+        if (this.activityCounts.learningCount > maxCount) {
+          maxCount = this.activityCounts.learningCount;
+          this.userType = 'LEARNER';
+        }
+        if (this.activityCounts.sportsCount > maxCount) {
+          maxCount = this.activityCounts.sportsCount;
+          this.userType = 'SPORTSMAN';
+        }
+        if (this.activityCounts.workingCount > maxCount) {
+          maxCount = this.activityCounts.workingCount;
+          this.userType = 'WORKER';
+        }
+        if (this.activityCounts.sleepingCount > maxCount) {
+          maxCount = this.activityCounts.sleepingCount;
+          this.userType = 'SLEEPER';
+        }
+        if (this.activityCounts.readingCount > maxCount) {
+          maxCount = this.activityCounts.readingCount;
+          this.userType = 'READER';
+        }
+        if (this.activityCounts.playingCount > maxCount) {
+          maxCount = this.activityCounts.playingCount;
+          this.userType = 'PLAYER';
+        }
+        if (this.activityCounts.shoppingCount > maxCount) {
+          maxCount = this.activityCounts.shoppingCount;
+          this.userType = 'SHOPPER';
+        }
+      }
     },
     components: {
       MenuBar
