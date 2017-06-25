@@ -1,9 +1,7 @@
 <template>
   <div class="about-wrapper">
-    <div class="pending">关于模块正在施工中...</div>
-    <div class="member-wrapper">
-      <div class="avatar"></div>
-      <div class="text"></div>
+    <div class="team">
+      <span class="text">开发: Jarman</span>
     </div>
     <div class="member-wrapper">
       <div class="avatar"></div>
@@ -17,6 +15,11 @@
       <div class="avatar"></div>
       <div class="text"></div>
     </div>
+    <div class="member-wrapper">
+      <div class="avatar"></div>
+      <div class="text"></div>
+    </div>
+    <div class="version">v0.5</div>
     <router-link to="/">
       <button class="log-off">退出</button>
     </router-link>
@@ -48,6 +51,9 @@
   .about-wrapper
     width 70%
     margin 0 auto
+    .team
+      .text
+        font-size 20px
     .member-wrapper
       display inline-block
       .avatar
