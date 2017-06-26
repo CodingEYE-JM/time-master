@@ -37,7 +37,8 @@
         if (this.selectedDate == '' || this.selectedDate == null) {
           return;
         }
-        this.$http.get('http://192.168.1.109:8088/api/activity/' + this.selectedDate).then((response) => {
+        this.$http.get('http://192.168.1.109:8088/api/activity/' + this.selectedDate
+          + '?username=' + sessionStorage.getItem('username')).then((response) => {
           response = response.body;
           this.activityData = response;
           this.activities = response.activities;
@@ -49,14 +50,15 @@
         this.activityData.activities = this.activities;
         this.activities = [];
         this.params = "?id=" + this.activityData.id
-          + "&eating=" +this.activityData.activities[0].active
-          + "&learning=" +this.activityData.activities[1].active
-          + "&sports=" +this.activityData.activities[2].active
-          + "&working=" +this.activityData.activities[3].active
-          + "&sleeping=" +this.activityData.activities[4].active
-          + "&reading=" +this.activityData.activities[5].active
-          + "&playing=" +this.activityData.activities[6].active
-          + "&shopping=" +this.activityData.activities[7].active;
+          + "&eating=" + this.activityData.activities[0].active
+          + "&learning=" + this.activityData.activities[1].active
+          + "&sports=" + this.activityData.activities[2].active
+          + "&working=" + this.activityData.activities[3].active
+          + "&sleeping=" + this.activityData.activities[4].active
+          + "&reading=" + this.activityData.activities[5].active
+          + "&playing=" + this.activityData.activities[6].active
+          + "&shopping=" + this.activityData.activities[7].active
+          + "&username=" + sessionStorage.getItem('username');
 
         this.$http.post('http://192.168.1.109:8088/api/activity/' + this.selectedDate + this.params).then((response) => {
         });

@@ -40,11 +40,12 @@
       }
     },
     created() {
-        if (sessionStorage.getItem('username') === null) {
-          router.push('/');
-          return;
-        }
-      this.$http.get('http://192.168.1.109:8088/api/activity/' + this.getYearMonth()).then((response) => {
+      if (sessionStorage.getItem('username') === null) {
+        router.push('/');
+        return;
+      }
+      this.$http.get('http://192.168.1.109:8088/api/activity/' + this.getYearMonth()
+        + '?username=' + sessionStorage.getItem('username')).then((response) => {
         response = response.body;
         this.activityCounts = response;
         this.getUserType();
