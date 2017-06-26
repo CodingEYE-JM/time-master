@@ -7,6 +7,8 @@
 <script>
   import echarts from 'echarts'
   import MenuBar from './MenuBar.vue'
+  import router from '../router'
+
   export default {
     data() {
       return {
@@ -105,6 +107,11 @@
             }
           ]
         })
+      }
+    },
+    created() {
+      if (sessionStorage.getItem('username') === null) {
+        router.push('/');
       }
     },
     mounted() {

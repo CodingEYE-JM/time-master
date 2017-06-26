@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/components/Login'
+import SignIn from '@/components/SignIn'
 import HomePage from '@/components/HomePage'
 import Activity from '@/components/Activity'
 import Report from '@/components/Report'
@@ -13,8 +13,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Login',
-      component: Login
+      name: 'SignIn',
+      component: SignIn
     },
     {
       path: '/homepage',

@@ -20,15 +20,14 @@
       <div class="text"></div>
     </div>
     <div class="version">v0.5</div>
-    <router-link to="/">
-      <button class="log-off">退出</button>
-    </router-link>
+    <button class="log-off" @click="logOff">退出</button>
     <MenuBar :tabStates="tabStates"></MenuBar>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import MenuBar from './MenuBar.vue'
+  import router from '../router'
 
   export default{
     data() {
@@ -39,6 +38,17 @@
           recommend: "",
           about: "selected"
         }
+      }
+    },
+    created() {
+      if (sessionStorage.getItem('username') === null) {
+        router.push('/');
+      }
+    },
+    methods: {
+      logOff() {
+        sessionStorage.clear();
+        router.push('/');
       }
     },
     components: {

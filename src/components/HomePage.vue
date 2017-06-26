@@ -13,6 +13,7 @@
 <script type="text/ecmascript-6">
   import MenuBar from './MenuBar.vue'
   import Activity from './Activity'
+  import router from '../router'
 
   export default{
     data() {
@@ -24,6 +25,11 @@
           recommend: "",
           about: ""
         }
+      }
+    },
+    created() {
+      if (sessionStorage.getItem('username') === null) {
+        router.push('/');
       }
     },
     components: {
