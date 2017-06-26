@@ -37,6 +37,11 @@
         mode: 'SignIn'
       }
     },
+    created() {
+      if (sessionStorage.getItem('username')) {
+        router.push('/homepage');
+      }
+    },
     methods: {
       validateSubmit(){
         if (this.username === '') {
@@ -86,8 +91,7 @@
         if (event.keyCode === 13) {
           if (this.mode === 'SignIn') {
             $('.sign-in').click();
-          }
-          if (this.mode === 'SignIn') {
+          }else if (this.mode === 'SignUp') {
             $('.sign-up').click();
           }
         }
