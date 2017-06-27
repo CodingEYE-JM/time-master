@@ -78,7 +78,7 @@
         font-size 12px
     .team
       position absolute
-      bottom 20%
+      bottom 130px
       left 50%
       transform translateX(-50%)
       .text
