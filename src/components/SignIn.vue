@@ -64,9 +64,9 @@
         }
         this.$http.post('http://192.168.1.109:8088/api/user/signin?username=' + this.username + '&password=' + this.password).then((response) => {
           response = response.body;
-          this.username = response.username;
-          if (this.username) {
-            sessionStorage.setItem('username', this.username);
+          if (response.username) {
+            sessionStorage.setItem('username', response.username);
+            sessionStorage.setItem('type', response.type);
             router.push('/homepage');
           }
         });

@@ -58,7 +58,8 @@
           + "&reading=" + this.activityData.activities[5].active
           + "&playing=" + this.activityData.activities[6].active
           + "&shopping=" + this.activityData.activities[7].active
-          + "&username=" + sessionStorage.getItem('username');
+          + "&username=" + sessionStorage.getItem('username')
+          + "&check=true";
 
         this.$http.post('http://192.168.1.109:8088/api/activity/' + this.selectedDate + this.params).then((response) => {
         });

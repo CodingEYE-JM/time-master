@@ -1,5 +1,9 @@
 <template>
   <div class="about-wrapper">
+    <mu-card class="user">
+      <div class="username">{{username}}</div>
+      <div class="type">{{type}}</div>
+    </mu-card>
     <div class="team">
       <span class="text">开发: Jarman</span>
     </div>
@@ -19,7 +23,6 @@
       <div class="avatar"></div>
       <div class="text"></div>
     </div>
-    <div class="version">v0.5</div>
     <button class="log-off" @click="logOff">退出</button>
     <MenuBar :tabStates="tabStates"></MenuBar>
   </div>
@@ -37,13 +40,17 @@
           report: "",
           recommend: "",
           about: "selected"
-        }
+        },
+        username: "",
+        type: ""
       }
     },
     created() {
       if (sessionStorage.getItem('username') === null) {
         router.push('/');
       }
+      this.username = sessionStorage.getItem('username');
+      this.type = sessionStorage.getItem('type');
     },
     methods: {
       logOff() {
@@ -61,7 +68,19 @@
   .about-wrapper
     width 70%
     margin 0 auto
+    .user
+      text-align right
+      padding 5px
+      .username
+        font-size 24px
+      .type
+        margin-top 5px
+        font-size 12px
     .team
+      position absolute
+      bottom 20%
+      left 50%
+      transform translateX(-50%)
       .text
         font-size 20px
     .member-wrapper
