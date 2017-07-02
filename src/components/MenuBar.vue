@@ -1,10 +1,21 @@
 <template>
   <div class="menu-bar">
-
-    <router-link to="/homepage" class="menu-bar-item" :class="tabStates['setting']">设定</router-link>
-    <router-link to="/report" class="menu-bar-item" :class="tabStates['report']">报表</router-link>
-    <router-link to="/recommend" class="menu-bar-item" :class="tabStates['recommend']">推荐</router-link>
-    <router-link to="/about" class="menu-bar-item" :class="tabStates['about']">关于</router-link>
+    <router-link to="/homepage" class="menu-bar-item" :class="tabStates['homepage']">
+      <i class="icon icon-home"></i>
+      <div class="text">主页</div>
+    </router-link>
+    <router-link to="/report" class="menu-bar-item" :class="tabStates['report']">
+      <i class="icon icon-report"></i>
+      <div class="text">报表</div>
+    </router-link>
+    <router-link to="/recommend" class="menu-bar-item" :class="tabStates['recommend']">
+      <i class="icon icon-recommend"></i>
+      <div class="text">推荐</div>
+    </router-link>
+    <router-link to="/settings" class="menu-bar-item" :class="tabStates['settings']">
+      <i class="icon icon-settings"></i>
+      <div class="text">设定</div>
+    </router-link>
   </div>
 </template>
 
@@ -29,12 +40,30 @@
     background-color #F5FAFA
     .menu-bar-item
       flex 1
-      margin 12px 0
-      font-size 20px
-      border-right 1px solid rgba(82, 136, 112, .5)
+      font-size 12px
       color #1d2f3b
       &.selected
         color rgb(253, 185, 51)
+        .icon
+          filter grayscale(0%)
       &:last-child
         border-right 0
+      .icon
+        display block
+        margin 2px auto
+        width 32px
+        height 32px
+        filter grayscale(100%)
+        &.icon-home
+          background url(../../static/img/home.svg) center center no-repeat
+          background-size 30px 30px
+        &.icon-report
+          background url(../../static/img/chart.svg) center center no-repeat
+          background-size 30px 30px
+        &.icon-recommend
+          background url(../../static/img/recommend.svg) center center no-repeat
+          background-size 30px 30px
+        &.icon-settings
+          background url(../../static/img/settings.svg) center center no-repeat
+          background-size 30px 30px
 </style>

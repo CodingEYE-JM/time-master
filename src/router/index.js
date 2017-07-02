@@ -5,7 +5,7 @@ import HomePage from '@/components/HomePage'
 import Activity from '@/components/Activity'
 import Report from '@/components/Report'
 import Recommend from '@/components/Recommend'
-import About from '@/components/About'
+import Settings from '@/components/Settings'
 
 Vue.use(Router)
 
@@ -37,9 +37,9 @@ export default new Router({
       component: Recommend
     },
     {
-      path: '/about',
-      name: 'About',
-      component: About
+      path: '/settings',
+      name: 'Settings',
+      component: Settings
     }
   ]
 })

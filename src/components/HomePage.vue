@@ -20,10 +20,10 @@
       return {
         selectedDate: '',
         tabStates: {
-          setting: "selected",
+          homepage: "selected",
           report: "",
           recommend: "",
-          about: ""
+          settings: ""
         }
       }
     },

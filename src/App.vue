@@ -7,7 +7,7 @@
 <script>
   export default {
     name: 'app',
-    created() {
+    mounted() {
       sessionStorage.setItem('host', 'http://localhost:8088');
     }
   }

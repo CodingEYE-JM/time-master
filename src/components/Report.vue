@@ -25,10 +25,10 @@
         chart: null,
         opinion: ['吃饭', '学习', '运动', '工作', '睡觉', '阅读', '游戏', '购物'],
         tabStates: {
-          setting: "",
+          homepage: "",
           report: "selected",
           recommend: "",
-          about: ""
+          settings: ""
         }
       }
     },

@@ -20,10 +20,10 @@
     data() {
       return {
         tabStates: {
-          setting: "",
+          homepage: "",
           report: "",
           recommend: "selected",
-          about: ""
+          settings: ""
         },
         sameTypeUsers: [],
       }

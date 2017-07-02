@@ -99,9 +99,9 @@
       submitInfo() {
         if (event.keyCode === 13) {
           if (this.mode === 'SignIn') {
-            $('.sign-in').click();
+            this.validateSubmit();
           } else if (this.mode === 'SignUp') {
-            $('.sign-up').click();
+            this.signUp();
           }
         }
       },

@@ -36,10 +36,10 @@
     data() {
       return {
         tabStates: {
-          setting: "",
+          homepage: "",
           report: "",
           recommend: "",
-          about: "selected"
+          settings: "selected"
         },
         username: "",
         type: ""
