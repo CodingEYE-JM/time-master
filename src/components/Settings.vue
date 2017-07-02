@@ -55,6 +55,7 @@
     methods: {
       logOff() {
         sessionStorage.clear();
+        sessionStorage.setItem('host', 'http://localhost:8088');
         router.push('/');
       }
     },
