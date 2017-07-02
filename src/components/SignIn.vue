@@ -112,6 +112,7 @@
         this.username = '';
         this.password = '';
         this.dup_password = '';
+        this.err_msg = '';
       }
 
     }
