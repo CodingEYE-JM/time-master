@@ -2,13 +2,15 @@
   <div class="sign-in-wrapper" @keydown="submitInfo()">
     <h1>{{ msg }}</h1>
     <div class="form-container">
+      <div class="error-message" v-show="err_msg.length>0">{{err_msg}}</div>
       <input type="text" class="username" placeholder="用户名" @keydown="resetError" v-model="username">
       <input type="password" class="password" placeholder="密码" @keydown="resetError" v-model="password">
       <button class="sign-in" @click="validateSubmit" v-show="mode==='SignIn'">登录</button>
       <span class="link-sign-up" @click="changeMode('SignUp')" v-show="mode==='SignIn'">没有账号，去注册</span>
+      <input type="password" class="password" placeholder="再次输入密码" @keydown="resetError" v-show="mode==='SignUp'"
+             v-model="dup_password">
       <button class="sign-up" @click="signUp" v-show="mode==='SignUp'">注册</button>
       <span class="link-sign-in" @click="changeMode('SignIn')" v-show="mode==='SignUp'">已有账号，去登录</span>
-      <div class="error"><span>+</span></div>
     </div>
     <div class="connect">
       <p>快速登录:</p>
@@ -25,15 +27,16 @@
 </template>
 
 <script>
-  import $ from '../../static/js/jquery-vendor.js'
   import router from '../router'
 
   export default {
     data () {
       return {
         msg: '欢迎来到【时趣】',
+        err_msg: '',
         username: '',
         password: '',
+        dup_password: '',
         mode: 'SignIn'
       }
     },
@@ -45,21 +48,11 @@
     methods: {
       validateSubmit(){
         if (this.username === '') {
-          $('.form-container .error').fadeOut('fast', function () {
-            $(this).css('top', '27px');
-          });
-          $('.form-container .error').fadeIn('fast', function () {
-            $(this).parent().find('.username').focus();
-          });
+          this.err_msg = '请输入用户名';
           return;
         }
         if (this.password === '') {
-          $('.form-container .error').fadeOut('fast', function () {
-            $(this).css('top', '96px');
-          });
-          $('.form-container .error').fadeIn('fast', function () {
-            $(this).parent().find('.password').focus();
-          });
+          this.err_msg = '请输入密码';
           return;
         }
         this.$http.post(sessionStorage.getItem('host') + '/api/user/signin?username=' + this.username + '&password=' + this.password).then((response) => {
@@ -68,30 +61,46 @@
             sessionStorage.setItem('username', response.username);
             sessionStorage.setItem('type', response.type);
             router.push('/homepage');
+          } else {
+            this.err_msg = '用户名或密码不正确';
           }
         });
       },
 
       signUp() {
+        if (this.username === '') {
+          this.err_msg = '请输入用户名';
+          return;
+        }
+        if (this.password === '') {
+          this.err_msg = '请输入密码';
+          return;
+        }
+        if (this.dup_password === '') {
+          this.err_msg = '请再次输入密码';
+          return;
+        }
         this.$http.post(sessionStorage.getItem('host') + '/api/user/signup?username=' + this.username + '&password=' + this.password).then((response) => {
           response = response.body;
           this.username = response.username;
           if (this.username) {
             sessionStorage.setItem('username', this.username);
             router.push('/homepage');
+          } else {
+            this.err_msg = '用户名已存在';
           }
         });
       },
 
       resetError(){
-        $('.form-container .error').fadeOut('fast');
+        this.err_msg = '';
       },
 
       submitInfo() {
         if (event.keyCode === 13) {
           if (this.mode === 'SignIn') {
             $('.sign-in').click();
-          }else if (this.mode === 'SignUp') {
+          } else if (this.mode === 'SignUp') {
             $('.sign-up').click();
           }
         }
@@ -100,6 +109,9 @@
       changeMode(mode)
       {
         this.mode = mode;
+        this.username = '';
+        this.password = '';
+        this.dup_password = '';
       }
 
     }
@@ -120,6 +132,17 @@
       max-width 300px
       margin 15px auto 0 auto
       text-align center
+      .error-message
+        height 21px
+        line-height 21px
+        width 100%
+        margin-top 25px
+        padding 0 7%
+        background rgba(191, 10, 16, .3)
+        border-radius 3px
+        box-shadow 0 2px 3px 0 rgba(191, 10, 16, .1) inset
+        font-size 14px
+        color rgba(191, 10, 16, .8)
       .username, .password
         height 42px
         line-height 21px
@@ -174,25 +197,8 @@
       .link-sign-in
         text-align left
 
-      .error
-        display none
-        position absolute
-        right -18%
-        width 40px
-        height 40px
-        background rgba(45, 45, 45, .25)
-        border-radius 8px
-        & span
-          font-family 'Avenir', Arial
-          display inline-block
-          margin-left 2px
-          font-size 40px
-          font-weight 700
-          line-height 40px
-          text-shadow 0 1px 2px rgba(0, 0, 0, .1)
-          transform rotate(45deg)
-
     .connect
+      display none
       width 305px
       margin 35px auto 0 auto
       font-size 18px
