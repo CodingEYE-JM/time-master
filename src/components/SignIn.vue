@@ -62,7 +62,7 @@
           });
           return;
         }
-        this.$http.post('http://192.168.1.109:8088/api/user/signin?username=' + this.username + '&password=' + this.password).then((response) => {
+        this.$http.post(sessionStorage.getItem('host') + '/api/user/signin?username=' + this.username + '&password=' + this.password).then((response) => {
           response = response.body;
           if (response.username) {
             sessionStorage.setItem('username', response.username);
@@ -73,7 +73,7 @@
       },
 
       signUp() {
-        this.$http.post('http://192.168.1.109:8088/api/user/signup?username=' + this.username + '&password=' + this.password).then((response) => {
+        this.$http.post(sessionStorage.getItem('host') + '/api/user/signup?username=' + this.username + '&password=' + this.password).then((response) => {
           response = response.body;
           this.username = response.username;
           if (this.username) {

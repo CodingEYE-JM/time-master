@@ -6,7 +6,11 @@
 
 <script>
   export default {
-    name: 'app'
+    name: 'app',
+    created() {
+      sessionStorage.setItem('host', 'http://localhost:8080/time-master-server');
+      sessionStorage.getItem('host')
+    }
   }
 </script>
 

@@ -33,12 +33,12 @@
         router.push('/');
         return;
       }
-      this.$http.get('http://192.168.1.109:8088/api/user/type' + '?username='
+      this.$http.get(sessionStorage.getItem('host') + '/api/user/type' + '?username='
         + sessionStorage.getItem('username')).then((response) => {
         response = response.body;
         if (response.type) {
           sessionStorage.setItem('type', response.type);
-          this.$http.get('http://192.168.1.109:8088/api/recommend/' + sessionStorage.getItem('type')
+          this.$http.get(sessionStorage.getItem('host') + '/api/recommend/' + sessionStorage.getItem('type')
           + "?username=" + sessionStorage.getItem('username')).then((response) => {
             response = response.body;
             this.sameTypeUsers = response;

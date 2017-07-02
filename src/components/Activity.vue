@@ -37,7 +37,7 @@
         if (this.selectedDate == '' || this.selectedDate == null) {
           return;
         }
-        this.$http.get('http://192.168.1.109:8088/api/activity/' + this.selectedDate
+        this.$http.get(sessionStorage.getItem('host') + '/api/activity/' + this.selectedDate
           + '?username=' + sessionStorage.getItem('username')).then((response) => {
           response = response.body;
           this.activityData = response;
@@ -61,7 +61,7 @@
           + "&username=" + sessionStorage.getItem('username')
           + "&check=true";
 
-        this.$http.post('http://192.168.1.109:8088/api/activity/' + this.selectedDate + this.params).then((response) => {
+        this.$http.post(sessionStorage.getItem('host') + '/api/activity/' + this.selectedDate + this.params).then((response) => {
         });
 
         this.$emit('modifyActivity');
