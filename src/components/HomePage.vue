@@ -31,6 +31,10 @@
       if (sessionStorage.getItem('username') === null) {
         router.push('/');
       }
+      this.selectedDate = sessionStorage.getItem('selectedDate');
+    },
+    updated() {
+      sessionStorage.setItem('selectedDate', this.selectedDate);
     },
     components: {
       MenuBar,
