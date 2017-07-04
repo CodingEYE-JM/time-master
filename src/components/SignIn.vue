@@ -80,14 +80,14 @@
           this.err_msg = '请再次输入密码';
           return;
         }
-        if(this.password !== this.dup_password){
+        if (this.password !== this.dup_password) {
           this.err_msg = '两次密码不一致';
           return;
         }
         this.$http.post(sessionStorage.getItem('host') + '/api/user/signup?username=' + this.username + '&password=' + this.password).then((response) => {
           response = response.body;
-          this.username = response.username;
-          if (this.username) {
+          if (response.username) {
+            this.username = response.username;
             sessionStorage.setItem('username', this.username);
             router.push('/homepage');
           } else {
